@@ -1,0 +1,73 @@
+.basket {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    left: 0;
+    top: 0;
+    background-color: rgba(#000000, 0.5);
+    z-index: 50;
+
+    &__body {
+        height: 100%;
+        background-color: #fff;
+        flex: 0 0 385px;
+        padding: 32px 30px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: calc(29 / 24 * 100%);
+        margin: 0 0 30px;
+    }
+
+    &__list {
+        overflow-y: auto;
+        flex: 1 1 auto;
+    }
+}
+
+.basketBottom {
+    flex: 0 0 133px;
+
+    &__item {
+        display: flex;
+        &:not(:last-child) {
+            margin-bottom: 19px;
+        }
+    }
+    &__name {
+        font-size: 16px;
+        line-height: calc(19 / 16 * 100%);
+        color: #000;
+    }
+    &__dots {
+        flex: 1 1 auto;
+        margin: 0 9px 5px;
+        border-bottom: 1px dotted rgba(#000, 0.5);
+    }
+    &__price {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: calc(19 / 16 * 100%);
+        color: #000;
+    }
+
+    button {
+        display: block;
+        text-align: center;
+        width: 100%;
+        height: 55px;
+        border-radius: 18px;
+        background-color: #9dd558;
+        color: #fff;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: calc(19 / 16 * 100%);
+        margin-top: 21px;
+    }
+}

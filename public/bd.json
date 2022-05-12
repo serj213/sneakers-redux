@@ -1,0 +1,36 @@
+{
+  "carts": [
+    {
+      "id": 0,
+      "img": "http://localhost:3000/img/01.jpg",
+      "name": "Мужские Кроссовки Nike Blazer Mid Suede",
+      "price": 12999
+    },
+    {
+      "id": 1,
+      "img": "http://localhost:3000/img/02.jpg",
+      "name": "Найки",
+      "price": 1500
+    },
+    {
+      "id": 2,
+      "img": "http://localhost:3000/img/01.jpg",
+      "name": "Мужские Кроссовки Nike Blazer Mid Suede",
+      "price": 12999
+    }
+  ],
+  "basket": [
+    {
+      "id": 2,
+      "img": "http://localhost:3000/img/01.jpg",
+      "name": "Мужские Кроссовки Nike Blazer Mid Suede",
+      "price": 12999
+    },
+    {
+      "id": 1,
+      "img": "http://localhost:3000/img/02.jpg",
+      "name": "Найки",
+      "price": 1500
+    }
+  ]
+}

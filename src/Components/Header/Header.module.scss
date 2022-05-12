@@ -1,0 +1,39 @@
+.header {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+    z-index: 50;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 111px;
+    }
+
+    button {
+        background-color: transparent;
+    }
+
+    &__info{
+        display: flex;
+        align-items: center;
+    }
+
+    &__basket {
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: calc(16 / 14 * 100%);
+        img {
+            margin-right: 10px;
+        }
+    }
+
+    &__favorite{
+        margin: 0 30px;
+    }
+}
