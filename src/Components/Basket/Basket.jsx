@@ -19,7 +19,6 @@ const Basket = ({ visibleBasket }) => {
 
     const deleteCartToBasket = (obj) => {
         dispatch(removeFetchBasketCart(obj));
-        // dispatch(removeBasketCart(obj))
     }
 
 

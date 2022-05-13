@@ -9,13 +9,23 @@ import cartAdd from '../../../assets/images/add.svg';
 
 
 
-const СartProduct = ({ id, img, name, price, addToBakset }) => {
+const СartProduct = ({ id, img, name, price, addToBakset,basketItems }) => {
+
+    
 
     const [addProduct, setAddProduct] = React.useState(false);
+    
+
+    // if(basketItems.length > 0){
+    //     if(basketItems.find(cart => cart.cartsId === id)){
+            
+    //     }
+    // }
+
 
     const addCartHandle = () => {
 
-        addToBakset({ id, img, name, price })
+        addToBakset({ id, img, name, price, cartsId:id })
         setAddProduct(true)
     }
 

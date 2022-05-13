@@ -12,10 +12,12 @@ import styles from './Products.module.scss';
 
 
 
-const Products = ({ visibleBasket}) => {
+const Products = () => {
 
     const dispacth = useDispatch();
-    const { carts, loading } = useSelector(state => state.carts);
+    const { carts, basket } = useSelector(state => state);
+
+
 
 
     React.useEffect(() => {
@@ -23,14 +25,24 @@ const Products = ({ visibleBasket}) => {
     }, []);
 
     const addToBakset = (item) => {
-        dispacth(addFetchBasketCart(item))
+        if (basket.basketCarts.length > 0 && basket.basketCarts.find(carts => carts.cartsId === item.id)) {
+        }
+        else {
+            dispacth(addFetchBasketCart(item))
+        }
+ 
 
     }
+
+    if (basket.basketCarts.length > 0) {
+
+    }
+
 
     return (
         <>
             {
-                !loading ?
+                !carts.loading ?
                     <section className={styles.products}>
                         <Container>
                             <div className={styles.products__inner}>
@@ -48,7 +60,7 @@ const Products = ({ visibleBasket}) => {
 
                                     {
 
-                                        carts.length > 0 && carts.map((cart) => {
+                                        carts.carts.length > 0 && carts.carts.map((cart) => {
 
                                             return (
                                                 <CartProduct
