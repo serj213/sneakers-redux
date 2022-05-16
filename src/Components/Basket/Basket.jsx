@@ -2,8 +2,9 @@ import React from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { removeBasketCart } from "../../redux/actions/basketAction";
 import { removeFetchBasketCart } from "../../asyncActions/basket";
+
+import { UseCart } from "../../hooks/useCart";
 
 import BasketItemCart from "./BasketItemCart/BasketItemCart";
 
@@ -13,7 +14,7 @@ import styles from './Basket.module.scss';
 
 const Basket = ({ visibleBasket }) => {
 
-    const { basketCarts, totalPrice } = useSelector(state => state.basket);
+    const { basketCarts } = useSelector(state => state.basket);
 
     const dispatch = useDispatch();
 
@@ -48,7 +49,7 @@ const Basket = ({ visibleBasket }) => {
                         </div>
 
                         <p className={styles.basketBottom__price}>
-                            {totalPrice} руб.
+                            {UseCart()} руб.
                         </p>
                     </div>
 
@@ -60,7 +61,7 @@ const Basket = ({ visibleBasket }) => {
                         </div>
 
                         <p className={styles.basketBottom__price}>
-                            1074 руб.
+                            {Math.ceil(UseCart() * 0.05)} руб.
                         </p>
                     </div>
 

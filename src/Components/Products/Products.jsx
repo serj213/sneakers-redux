@@ -17,7 +17,11 @@ const Products = () => {
     const dispacth = useDispatch();
     const { carts, basket } = useSelector(state => state);
 
+    const [searchValue, setSearchValue] = React.useState('');
 
+    const onChangeSearchValue = (e) => {
+        setSearchValue(e.target.value)
+    }
 
 
     React.useEffect(() => {
@@ -30,14 +34,37 @@ const Products = () => {
         else {
             dispacth(addFetchBasketCart(item))
         }
- 
-
     }
 
-    if (basket.basketCarts.length > 0) {
-
+    const cartAdded = id => {
+        return basket.basketCarts.some(item => Number(item.cartsId) === Number(id));
     }
 
+    const filterCartSearch = () => {
+        const searchResult = carts.carts.filter(({ name }) => name.toLowerCase().includes(searchValue.toLowerCase()));
+
+        return (
+            searchResult.length > 0 ? searchResult.map(cart => {
+                return (
+                    <CartProduct
+                        key={cart.id}
+                        id={cart.id}
+                        img={cart.img}
+                        name={cart.name}
+                        price={cart.price}
+                        addToBakset={addToBakset}
+                        cartAdded={cartAdded}
+                    />
+                )
+            })
+                :
+
+                <div className={styles.products__notFound}>
+                    Ничего не найдено
+                </div>
+        )
+
+    }
 
     return (
         <>
@@ -48,32 +75,34 @@ const Products = () => {
                             <div className={styles.products__inner}>
                                 <div className={styles.products__top}>
                                     <h2 className={styles.products__title}>
-                                        Все кроссовки
+                                        {searchValue.length > 0 ? `Поиск по запросу: ${searchValue}` : 'Все кроссовки'}
                                     </h2>
                                     <div className={styles.products__search}>
-                                        <input type="text" placeholder="Поиск" />
+                                        <input onChange={(e) => onChangeSearchValue(e)} type="text" value={searchValue} placeholder="Поиск" />
                                     </div>
 
                                 </div>
 
-                                <div className={styles.products__box}>
+                                <div className={`${styles.products__box} ${searchValue.length > 0 && styles.gridDisable}`}>
 
                                     {
+                                        searchValue.length > 0 ?
+                                            filterCartSearch()
+                                            :
+                                            carts.carts.length > 0 && carts.carts.map((cart) => {
 
-                                        carts.carts.length > 0 && carts.carts.map((cart) => {
-
-                                            return (
-                                                <CartProduct
-                                                    key={cart.id}
-                                                    id={cart.id}
-                                                    img={cart.img}
-                                                    name={cart.name}
-                                                    price={cart.price}
-                                                    addToBakset={addToBakset}
-                                                    dispacth={dispacth}
-                                                />
-                                            )
-                                        })
+                                                return (
+                                                    <CartProduct
+                                                        key={cart.id}
+                                                        id={cart.id}
+                                                        img={cart.img}
+                                                        name={cart.name}
+                                                        price={cart.price}
+                                                        addToBakset={addToBakset}
+                                                        cartAdded={cartAdded}
+                                                    />
+                                                )
+                                            })
                                     }
 
                                 </div>

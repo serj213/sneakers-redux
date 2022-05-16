@@ -9,26 +9,12 @@ import cartAdd from '../../../assets/images/add.svg';
 
 
 
-const СartProduct = ({ id, img, name, price, addToBakset,basketItems }) => {
-
-    
-
-    const [addProduct, setAddProduct] = React.useState(false);
-    
-
-    // if(basketItems.length > 0){
-    //     if(basketItems.find(cart => cart.cartsId === id)){
-            
-    //     }
-    // }
-
+const СartProduct = ({ id, img, name, price, addToBakset, cartAdded }) => {
 
     const addCartHandle = () => {
 
-        addToBakset({ id, img, name, price, cartsId:id })
-        setAddProduct(true)
+        addToBakset({ id, img, name, price, cartsId: id })
     }
-
 
     return (
         <div className={styles.cart}>
@@ -52,7 +38,7 @@ const СartProduct = ({ id, img, name, price, addToBakset,basketItems }) => {
                     </p>
                 </div>
                 <button onClick={addCartHandle} className={styles.cart__addCart}>
-                    <img src={addProduct ? cartAdd : cartNoAdd} alt="" />
+                    <img src={cartAdded(id) ? cartAdd : cartNoAdd} alt="" />
                 </button>
             </div>
         </div>

@@ -1,6 +1,7 @@
 import React from "react";
 
 import Container from "../Container/Container";
+import { UseCart } from "../../hooks/useCart";
 
 import styles from './Header.module.scss';
 
@@ -11,6 +12,8 @@ import user from '../../assets/images/user.svg';
 
 
 const Header = ({ visibleBasket }) => {
+
+
     return (
         <header className={styles.header}>
             <Container>
@@ -22,7 +25,7 @@ const Header = ({ visibleBasket }) => {
                     <div className={styles.header__info}>
                         <button onClick={visibleBasket} className={styles.header__basket}>
                             <img src={basket} alt="" />
-                            <span>1205</span>руб.
+                            <span>{UseCart()}</span>руб.
                         </button>
 
                         <button className={styles.header__favorite}>

@@ -35,4 +35,15 @@
         grid-template-columns: repeat(4, 210px);
         grid-gap:40px;
     }
+
+    &__notFound{
+        font-size: 35px;
+        line-height: 110%;
+    }
 }
+
+// .gridDisable{
+//     display: flex;
+//     justify-content: center;
+//     align-items: start;
+// }
