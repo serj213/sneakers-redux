@@ -1,3 +1,5 @@
+@import '../../assets/styles/global.scss';
+
 .products {
     &__top {
         display: flex;
@@ -5,12 +7,6 @@
         margin: 0 0 30px;
     }
 
-    &__title {
-        font-weight: 700;
-        font-size: 32px;
-        line-height: calc(38 / 32 * 100%);
-        color: #000;
-    }
 
     &__search {
         flex: 0 0 250px;
@@ -29,13 +25,6 @@
             }
         }
     }
-
-    &__box{
-        display: grid;
-        grid-template-columns: repeat(4, 210px);
-        grid-gap:40px;
-    }
-
     &__notFound{
         font-size: 35px;
         line-height: 110%;

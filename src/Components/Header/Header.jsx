@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import Container from "../Container/Container";
 import { UseCart } from "../../hooks/useCart";
 
@@ -18,9 +20,9 @@ const Header = ({ visibleBasket }) => {
         <header className={styles.header}>
             <Container>
                 <div className={styles.header__inner}>
-                    <span className={styles.header__logo}>
+                    <Link to='/' className={styles.header__logo}>
                         <img src={logo} alt="" />
-                    </span>
+                    </Link>
 
                     <div className={styles.header__info}>
                         <button onClick={visibleBasket} className={styles.header__basket}>
@@ -28,9 +30,9 @@ const Header = ({ visibleBasket }) => {
                             <span>{UseCart()}</span>руб.
                         </button>
 
-                        <button className={styles.header__favorite}>
+                        <Link to='/favorite' className={styles.header__favorite}>
                             <img src={favorite} alt="" />
-                        </button>
+                        </Link>
                         <button className={styles.header__user}>
                             <img src={user} alt="" />
                         </button>

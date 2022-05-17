@@ -9,20 +9,34 @@ import cartAdd from '../../../assets/images/add.svg';
 
 
 
-const СartProduct = ({ id, img, name, price, addToBakset, cartAdded }) => {
+const СartProduct = ({
+    id,
+    img,
+    name,
+    price,
+    addToBakset = () => { },
+    cartAdded = () => { },
+    addFavorie = () => {}
+}) => {
+
 
     const addCartHandle = () => {
-
         addToBakset({ id, img, name, price, cartsId: id })
     }
 
+    const addFavoriteHandler = () => {
+        addFavorie({ id, img, name, price, cartsId: id })
+    }
+
+
+
     return (
         <div className={styles.cart}>
+            <button onClick={addFavoriteHandler} className={styles.cart__favorite}>
+                <img src={favorite} alt="" />
+            </button>
             <div className={styles.cart__imageBox}>
                 <img className={styles.cart__imageImg} src={img} alt="" />
-                <button>
-                    <img src={favorite} alt="" />
-                </button>
             </div>
             <div className={styles.cart__name}>
                 {name}

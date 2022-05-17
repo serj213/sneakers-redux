@@ -4,9 +4,11 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 
 import { addFetchBasketCart } from "../../asyncActions/basket";
-import { fetchCarts } from "../../asyncActions/carts";
+import { addFavoriteCart } from "../../asyncActions/favorite";
+
 import Container from "../Container/Container";
 import CartProduct from './СartProduct/СartProduct';
+import GridCartBox from "../GridCartBox/GridCartBox";
 
 import styles from './Products.module.scss';
 
@@ -24,10 +26,6 @@ const Products = () => {
     }
 
 
-    React.useEffect(() => {
-        dispacth(fetchCarts());
-    }, []);
-
     const addToBakset = (item) => {
         if (basket.basketCarts.length > 0 && basket.basketCarts.find(carts => carts.cartsId === item.id)) {
         }
@@ -38,6 +36,10 @@ const Products = () => {
 
     const cartAdded = id => {
         return basket.basketCarts.some(item => Number(item.cartsId) === Number(id));
+    }
+
+    const addFavorie = obj => {
+        dispacth(addFavoriteCart(obj))
     }
 
     const filterCartSearch = () => {
@@ -54,6 +56,7 @@ const Products = () => {
                         price={cart.price}
                         addToBakset={addToBakset}
                         cartAdded={cartAdded}
+                        addFavorie={addFavorie}
                     />
                 )
             })
@@ -74,7 +77,7 @@ const Products = () => {
                         <Container>
                             <div className={styles.products__inner}>
                                 <div className={styles.products__top}>
-                                    <h2 className={styles.products__title}>
+                                    <h2 className={`${styles.products__title} ${styles.title}`}>
                                         {searchValue.length > 0 ? `Поиск по запросу: ${searchValue}` : 'Все кроссовки'}
                                     </h2>
                                     <div className={styles.products__search}>
@@ -83,8 +86,7 @@ const Products = () => {
 
                                 </div>
 
-                                <div className={`${styles.products__box} ${searchValue.length > 0 && styles.gridDisable}`}>
-
+                                <GridCartBox>
                                     {
                                         searchValue.length > 0 ?
                                             filterCartSearch()
@@ -100,12 +102,16 @@ const Products = () => {
                                                         price={cart.price}
                                                         addToBakset={addToBakset}
                                                         cartAdded={cartAdded}
+                                                        addFavorie={addFavorie}
                                                     />
                                                 )
                                             })
                                     }
+                                </GridCartBox>
 
-                                </div>
+
+
+
                             </div>
                         </Container>
                     </section>
